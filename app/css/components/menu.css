@@ -1,0 +1,38 @@
+.menu-item {
+  @apply relative;
+  > a {
+    @apply text-xl mr-6 py-1 block;
+  }
+  &:hover .submenu {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+.submenu {
+  min-width: 170px;
+  transform: translateY(-10px);
+  visibility: hidden;
+  top: 120%;
+  @apply p-4 text-white text-sm transition-all ease-in duration-300 bg-black absolute left-0 opacity-0;
+  &::before {
+    position: absolute;
+    top: -15px;
+    left: 8px;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom-color: #111;
+    content: '';
+  }
+  a {
+    @apply hover:underline;
+  }
+}
+.headroom-wrapper {
+  @apply relative z-50;
+}
+.headroom--pinned {
+  @apply !z-20;
+}

@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "name": "remix-app-template",
+  "description": "",
+  "license": "",
+  "scripts": {
+    "build": "remix build",
+    "build:worker": "esbuild --define:process.env.NODE_ENV='\"production\"' --minify --bundle --sourcemap --outdir=dist ./worker",
+    "deploy": "yarn run build && wrangler publish -e development",
+    "deploy:production": "yarn run build && wrangler publish -e production",
+    "dev:tailwind": "tailwindcss -i ./app/css/style.css -o ./app/style.css -c ./tailwind.config.js --postcss -w",
+    "dev:worker": "esbuild --define:process.env.NODE_ENV='\"development\"' --bundle --sourcemap --outdir=dist ./worker",
+    "dev:miniflare": "miniflare --build-command 'yarn run dev:worker' --watch",
+    "dev:remix": "remix watch",
+    "dev": "NODE_ENV=development concurrently 'yarn:dev:*'",
+    "prebuild": "tailwindcss -i ./app/css/style.css -o ./app/style.css -c ./tailwind.config.js --postcss --minify",
+    "postinstall": "remix setup cloudflare-workers",
+    "start": "yarn run dev:miniflare"
+  },
+  "dependencies": {
+    "@remix-run/cloudflare-workers": "^1.1.1",
+    "@remix-run/react": "^1.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "remix": "^1.1.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "3.3.0",
+    "@remix-run/dev": "^1.1.1",
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.3.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "concurrently": "^7.0.0",
+    "esbuild": "0.14.11",
+    "miniflare": "2.0.0-next.3",
+    "postcss": "^8.4.5",
+    "postcss-import": "^14.0.2",
+    "postcss-import-ext-glob": "^2.0.1",
+    "tailwindcss": "^3.0.12",
+    "typescript": "^4.5.4"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "sideEffects": false,
+  "main": "dist/worker.js"
+}

@@ -1,0 +1,25 @@
+name = "remix-boilerplate"
+type = "javascript"
+
+[env.development]
+zone_id = ""
+account_id = "93e39c248caa03a01ab11bc4d73875cf"
+route = ""
+workers_dev = true
+
+[env.production]
+zone_id = "b79f0295aaddd62c59d1a71a7bd8924a"
+account_id = "93e39c248caa03a01ab11bc4d73875cf"
+route = "https://remix.hungvu.work/*"
+workers_dev = false
+
+[site]
+bucket = "./public"
+entry-point = "."
+
+[build]
+command = "npm run build:worker"
+watch_dir = "build/index.js"
+
+[build.upload]
+format="service-worker"
