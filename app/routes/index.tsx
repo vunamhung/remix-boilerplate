@@ -1,7 +1,7 @@
 export default function Index() {
   return (
     <div className="container my-20">
-      <h1 className="text-red-500">Welcome to Remix</h1>
+      <h1 className="text-blue-700">Welcome to Remix</h1>
       <ul>
         <li>
           <a target="_blank" href="https://remix.run/tutorials/blog" rel="noreferrer">
