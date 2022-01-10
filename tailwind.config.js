@@ -1,4 +1,5 @@
 const { fontFamily, spacing } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
@@ -8,6 +9,14 @@ module.exports = {
       sans: ['Muli', ...fontFamily.sans],
     },
     extend: {
+      colors: {
+        neutral: colors.slate,
+        positive: colors.green,
+        urge: colors.violet,
+        warning: colors.yellow,
+        info: colors.blue,
+        critical: colors.red,
+      },
       container: {
         center: true,
         padding: spacing[6],
@@ -68,5 +77,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')],
+  plugins: [require('@vunamhung/slimui'), require('@tailwindcss/typography'), require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')],
 };
