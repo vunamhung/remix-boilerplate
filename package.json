@@ -7,6 +7,7 @@
     "build": "remix build",
     "build:worker": "esbuild --define:process.env.NODE_ENV='\"production\"' --minify --bundle --sourcemap --outdir=dist ./worker",
     "deploy": "yarn run build && wrangler publish -e development",
+    "deploy:preview": "yarn run build && wrangler dev -e development",
     "deploy:production": "yarn run build && wrangler publish -e production",
     "dev:tailwind": "tailwindcss -i ./app/css/style.css -o ./app/style.css -c ./tailwind.config.js --postcss -w",
     "dev:worker": "esbuild --define:process.env.NODE_ENV='\"development\"' --bundle --sourcemap --outdir=dist ./worker",
