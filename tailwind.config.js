@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
-  content: ['./app/routes/**/*.{js,tsx}'],
+  content: ['./app/**/*.tsx'],
   theme: {
     fontFamily: {
       sans: ['Muli', ...fontFamily.sans],

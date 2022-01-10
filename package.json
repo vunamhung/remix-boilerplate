@@ -17,7 +17,7 @@
     "prebuild": "tailwindcss -i app/assets/css/style.css -o ./app/style.css -c ./tailwind.config.js --postcss --minify",
     "postinstall": "remix setup cloudflare-workers",
     "start": "yarn run dev:miniflare",
-    "svgr": "svgr app/assets/svg/ -d app/icons/ --icon"
+    "svgr": "svgr app/assets/svg/ -d app/icons/ --ext tsx --icon"
   },
   "dependencies": {
     "@remix-run/cloudflare-workers": "^1.1.1",
@@ -46,6 +46,7 @@
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "@vunamhung/slimui": "^0.10.1",
+    "babel-eslint": "^10.1.0",
     "concurrently": "^7.0.0",
     "esbuild": "0.14.11",
     "eslint": "7.32.0",
