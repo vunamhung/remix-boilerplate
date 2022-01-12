@@ -20,6 +20,7 @@
     "svgr": "svgr app/assets/svg/ -d app/icons/ --ext tsx --icon"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
     "@remix-run/cloudflare-workers": "^1.1.1",
     "@remix-run/react": "^1.1.1",
     "clsx": "^1.1.1",
