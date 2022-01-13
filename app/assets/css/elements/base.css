@@ -1,8 +1,9 @@
-@layer base {
-  html {
-    @apply antialiased;
-  }
-  button {
-    @apply focus:outline-none;
+html {
+  @apply antialiased;
+}
+.grid {
+  @apply grid-cols-1;
+  > * {
+    @apply min-w-0;
   }
 }
