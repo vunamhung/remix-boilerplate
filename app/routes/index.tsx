@@ -1,6 +1,6 @@
 import type { HeadersFunction } from 'remix';
 
-export let headers: HeadersFunction = () => ({ 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=600' });
+export const headers: HeadersFunction = () => ({ 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=600' });
 
 export default function Index() {
   return (
