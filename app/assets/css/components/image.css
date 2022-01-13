@@ -1,0 +1,14 @@
+@layer utilities {
+  .loading1 {
+    background-image: svg-load('../../images/infinite.svg');
+    @apply bg-gray-100 bg-no-repeat bg-center;
+  }
+  .loading2 {
+    background-image: svg-load('../../images/loading.svg');
+    @apply bg-gray-100 bg-no-repeat bg-center;
+  }
+  .line {
+    background: linear-gradient(to right, #eee, #eee 1px, #fff 1px, #fff);
+    background-size: 10.74rem 100%;
+  }
+}
