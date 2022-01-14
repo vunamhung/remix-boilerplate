@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { MetaFunction, LinksFunction } from 'remix';
+import type { MetaFunction, LinksFunction, LoaderFunction } from 'remix';
 import type { iError } from '~/utilities/types';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch, useLoaderData } from 'remix';
 import { DynamicLinks } from 'remix-utils';
@@ -9,14 +9,7 @@ import stylesUrl from './style.css';
 
 export const meta: MetaFunction = () => ({ title: 'New Remix App' });
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesUrl }];
-
-export function loader() {
-  return {
-    ENV: {
-      NODE_ENV: process.env.NODE_ENV,
-    },
-  };
-}
+export const loader: LoaderFunction = () => ({ ENV: { NODE_ENV: process.env.NODE_ENV } });
 
 function Document({ children, title }: { children: ReactNode; title?: string }) {
   const data = useLoaderData();
