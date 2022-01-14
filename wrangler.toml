@@ -1,5 +1,6 @@
 name = "remix-boilerplate"
 type = "javascript"
+compatibility_date = "2022-01-14"
 
 [env.development]
 zone_id = ""
