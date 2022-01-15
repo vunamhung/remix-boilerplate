@@ -12,7 +12,6 @@ require('esbuild')
       'process.env.API': '"https://api.remix.run"',
     },
   })
-  .then(() => console.log('Build succeeded.'))
   .catch((e) => {
     console.log('Error building:', e.message);
     process.exit(1);

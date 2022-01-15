@@ -11,7 +11,6 @@ require('esbuild')
       'process.env.API': '"http://0.0.0.0:3000"',
     },
   })
-  .then(() => console.log('Build succeeded.'))
   .catch((e) => {
     console.log('Error building:', e.message);
     process.exit(1);

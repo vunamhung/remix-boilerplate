@@ -6,17 +6,19 @@
   "scripts": {
     "postinstall": "remix setup cloudflare-workers",
     "tailwind": "tailwindcss -i app/assets/css/style.css -o ./app/style.css -c ./tailwind.config.js --postcss",
-    "dev:tailwind": "yarn run tailwind -w",
+    "dev:tailwind": "yarn run tailwind --watch",
     "dev:worker": "./build_dev.js",
     "dev:miniflare": "miniflare --build-command 'yarn run dev:worker' --watch",
     "dev:remix": "remix watch",
     "dev": "NODE_ENV=development concurrently 'yarn:dev:*'",
+    "cleanup": "rimraf .cache ./dist ./build ./public/build ./app/style.css",
+    "prebuild": "yarn run cleanup",
     "build": "yarn run tailwind --minify && remix build",
     "build:worker": "./build_production.js",
     "deploy": "yarn run build && wrangler publish -e development",
     "deploy:production": "yarn run build && wrangler publish -e production",
     "deploy:preview": "yarn run build && wrangler dev -e development",
-    "start": "yarn run dev:miniflare",
+    "start": "miniflare",
     "svgr": "svgr app/assets/svg/ -d app/icons/ --ext tsx --icon"
   },
   "dependencies": {
@@ -64,6 +66,7 @@
     "postcss-import": "^14.0.2",
     "postcss-import-ext-glob": "^2.0.1",
     "postcss-inline-svg": "^5.0.0",
+    "rimraf": "^3.0.2",
     "tailwindcss": "^3.0.12",
     "typescript": "^4.5.4"
   },

@@ -1,4 +1,4 @@
-import type { ReactChild } from 'react';
+import type { ReactNode } from 'react';
 
 export default function VInputGroup({ className, children, errors, label, htmlFor, helperText }: props) {
   return (
@@ -10,4 +10,4 @@ export default function VInputGroup({ className, children, errors, label, htmlFo
   );
 }
 
-type props = { className: string; children: ReactChild; errors: string; label: string; htmlFor: string; helperText: string };
+type props = { className: string; children: ReactNode; errors: string; label: string; htmlFor: string; helperText: string };
