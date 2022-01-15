@@ -7,17 +7,15 @@
   "scripts": {
     "postinstall": "remix setup cloudflare-workers",
     "tailwind": "tailwindcss -i app/assets/css/style.css -o ./app/style.css -c ./tailwind.config.js --postcss",
-    "dev:tailwind": "yarn run tailwind --watch",
-    "dev:miniflare": "miniflare --build-command './build_dev.mjs' --watch",
+    "dev:tailwind": "yarn run tailwind -w",
+    "dev:miniflare": "miniflare --build-command './build_dev.mjs' -wd",
     "dev:remix": "remix watch",
-    "dev": "NODE_ENV=development concurrently 'yarn:dev:*'",
+    "dev": "concurrently 'yarn:dev:*'",
     "prebuild": "rimraf .cache ./dist ./build ./public/build ./app/style.css",
     "build": "yarn run tailwind --minify && remix build",
     "build:worker": "./build_production.mjs",
     "deploy": "yarn run build && wrangler publish -e development",
     "deploy:production": "yarn run build && wrangler publish -e production",
-    "deploy:preview": "yarn run build && wrangler dev -e development",
-    "start": "miniflare",
     "svgr": "svgr app/assets/svg/ -d app/icons/ --ext tsx --icon"
   },
   "dependencies": {
