@@ -1,18 +1,17 @@
 {
   "private": true,
   "name": "remix-app-template",
-  "description": "",
-  "license": "",
+  "description": "Fastest FE Site",
+  "license": "MIT",
+  "main": "dist/worker.js",
   "scripts": {
     "postinstall": "remix setup cloudflare-workers",
     "tailwind": "tailwindcss -i app/assets/css/style.css -o ./app/style.css -c ./tailwind.config.js --postcss",
     "dev:tailwind": "yarn run tailwind --watch",
-    "dev:worker": "./build_dev.mjs",
-    "dev:miniflare": "miniflare --build-command 'yarn run dev:worker' --watch",
+    "dev:miniflare": "miniflare --build-command './build_dev.mjs' --watch",
     "dev:remix": "remix watch",
     "dev": "NODE_ENV=development concurrently 'yarn:dev:*'",
-    "cleanup": "rimraf .cache ./dist ./build ./public/build ./app/style.css",
-    "prebuild": "yarn run cleanup",
+    "prebuild": "rimraf .cache ./dist ./build ./public/build ./app/style.css",
     "build": "yarn run tailwind --minify && remix build",
     "build:worker": "./build_production.mjs",
     "deploy": "yarn run build && wrangler publish -e development",
@@ -73,6 +72,5 @@
   "engines": {
     "node": ">=14"
   },
-  "sideEffects": false,
-  "main": "dist/worker.js"
+  "sideEffects": false
 }
