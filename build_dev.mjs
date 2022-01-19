@@ -1,20 +1,17 @@
 #!/usr/bin/env node
-import * as esbuild from 'esbuild';
+import { build } from 'esbuild';
 
-try {
-  await esbuild.build({
-    entryPoints: ['./worker'],
-    bundle: true,
-    sourcemap: true,
-    minify: false,
-    outdir: 'dist',
-    define: {
-      'process.env.NODE_ENV': '"development"',
-      'process.env.API': '"http://0.0.0.0:3000"',
-      'process.env.GTM_ID': '"GTM-P7L43JT"',
-    },
-  });
-} catch (e) {
-  console.log('Error building:', e.message);
-  process.exit(1);
-}
+const options = {
+  entryPoints: ['./worker'],
+  bundle: true,
+  sourcemap: true,
+  minify: false,
+  outdir: 'dist',
+  define: {
+    'process.env.NODE_ENV': '"development"',
+    'process.env.API': '"http://0.0.0.0:3000"',
+    'process.env.GTM_ID': '"GTM-P7L43JT"',
+  },
+};
+
+build(options).catch(() => process.exit(1));
