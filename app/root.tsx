@@ -1,19 +1,28 @@
 import type { ReactNode } from 'react';
-import type { MetaFunction, LinksFunction, LoaderFunction } from 'remix';
+import type { MetaFunction, LinksFunction, ShouldReloadFunction, LoaderFunction } from 'remix';
 import type { iError } from '~/utilities/types';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch, useLoaderData } from 'remix';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useCatch, LiveReload, useLoaderData, json } from 'remix';
+import { GTMProvider } from '@elgorditosalsero/react-gtm-hook';
+import { createHooks } from '@wordpress/hooks';
 import { DynamicLinks } from 'remix-utils';
+import { organization } from '~/utilities/schema';
+import { JsonLd } from '~/components';
 import TheHeader from '~/modules/TheHeader';
 import TheFooter from '~/modules/TheFooter';
+import layout from '~/layout/default';
 import stylesUrl from './style.css';
 
-export const meta: MetaFunction = () => ({ title: 'New Remix App' });
+export const hooks = createHooks();
+export const meta: MetaFunction = () => ({ title: 'POD Remix App' });
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesUrl }];
-export const loader: LoaderFunction = () => ({ ENV: { NODE_ENV: process.env.NODE_ENV } });
+export const unstable_shouldReload: ShouldReloadFunction = () => false;
+export const loader: LoaderFunction = () => ({
+  ENV: {
+    GTM_ID: process.env.GTM_ID,
+  },
+});
 
 function Document({ children, title }: { children: ReactNode; title?: string }) {
-  const data = useLoaderData();
-
   return (
     <html lang="en">
       <head>
@@ -23,46 +32,55 @@ function Document({ children, title }: { children: ReactNode; title?: string }) 
         <Meta />
         <DynamicLinks />
         <Links />
+        {hooks.applyFilters('head')}
       </head>
       <body>
         {children}
         <ScrollRestoration />
         <Scripts />
+        <JsonLd data={organization} />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
-        <script dangerouslySetInnerHTML={{ __html: `window.ENV = ${JSON.stringify(data.ENV)}` }} />
       </body>
     </html>
   );
 }
 
+type iData = { ENV: { GTM_ID: string } };
+
 export default function App() {
+  const data = useLoaderData<iData>();
+
+  layout();
+
   return (
     <Document>
-      <TheHeader />
-      <Outlet />
-      <TheFooter />
+      <GTMProvider state={{ id: data.ENV.GTM_ID }}>
+        <TheHeader />
+        <Outlet />
+        <TheFooter />
+      </GTMProvider>
     </Document>
   );
 }
 
 export function CatchBoundary() {
-  let caught = useCatch();
+  const { status, statusText } = useCatch();
 
-  switch (caught.status) {
+  switch (status) {
     case 401:
     case 404:
       return (
-        <Document title={`${caught.status} ${caught.statusText}`}>
+        <Document title={`${status} ${statusText}`}>
           <div className="container-fluid">
             <h1>
-              {caught.status} {caught.statusText}
+              {status} {statusText}
             </h1>
           </div>
         </Document>
       );
 
     default:
-      throw new Error(`Unexpected caught response with status: ${caught.status}`);
+      throw new Error(`Unexpected caught response with status: ${status}`);
   }
 }
 

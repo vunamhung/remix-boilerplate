@@ -11,6 +11,7 @@ try {
     define: {
       'process.env.NODE_ENV': '"development"',
       'process.env.API': '"http://0.0.0.0:3000"',
+      'process.env.GTM_ID': '"GTM-P7L43JT"',
     },
   });
 } catch (e) {

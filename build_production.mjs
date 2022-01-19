@@ -12,6 +12,7 @@ try {
     define: {
       'process.env.NODE_ENV': '"production"',
       'process.env.API': '"https://api.remix.run"',
+      'process.env.GTM_ID': '"GTM-P7L43JT"',
     },
   });
   console.log(await esbuild.analyzeMetafile(result.metafile));
