@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 import type { MetaFunction, LinksFunction, ShouldReloadFunction, LoaderFunction } from 'remix';
 import type { iError } from '~/utilities/types';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useCatch, LiveReload, useLoaderData, json } from 'remix';
-import { GTMProvider } from '@elgorditosalsero/react-gtm-hook';
-import { createHooks } from '@wordpress/hooks';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useCatch, LiveReload, useLoaderData } from 'remix';
 import { DynamicLinks } from 'remix-utils';
+import { createHooks } from '@wordpress/hooks';
+import { GTMProvider } from '@elgorditosalsero/react-gtm-hook';
 import { organization } from '~/utilities/schema';
 import { JsonLd } from '~/components';
 import TheHeader from '~/modules/TheHeader';
@@ -16,11 +16,7 @@ export const hooks = createHooks();
 export const meta: MetaFunction = () => ({ title: 'POD Remix App' });
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesUrl }];
 export const unstable_shouldReload: ShouldReloadFunction = () => false;
-export const loader: LoaderFunction = () => ({
-  ENV: {
-    GTM_ID: process.env.GTM_ID,
-  },
-});
+export const loader: LoaderFunction = () => ({ ENV: { GTM_ID: process.env.GTM_ID } });
 
 function Document({ children, title }: { children: ReactNode; title?: string }) {
   return (

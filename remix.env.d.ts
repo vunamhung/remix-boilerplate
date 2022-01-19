@@ -2,5 +2,11 @@
 /// <reference types="@remix-run/cloudflare-workers/globals" />
 /// <reference types="@cloudflare/workers-types" />
 
-declare var ENV: { NODE_ENV: string };
-declare module '*';
+declare var process: {
+  env: {
+    NODE_ENV: string;
+    GTM_ID: string;
+  };
+};
+
+declare module 'react-lazyload';
