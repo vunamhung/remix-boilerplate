@@ -1,5 +1,5 @@
-export default function Skeleton({ className }: props) {
-  return <div className={`skeleton leading-none overflow-hidden relative bg-gray-200 ${className}`} />;
-}
+import type { FC } from 'react';
 
-type props = { className: string };
+export const Skeleton: FC<{ className: string }> = ({ className }) => (
+  <div className={`skeleton relative overflow-hidden bg-gray-200 leading-none ${className}`} />
+);

@@ -10,16 +10,10 @@ You will be running two processes during development:
 - The Remix development server
 
 ```sh
-# in one tab, start the remix dev server
 $ yarn run dev
-
-# in another, start the miniflare server
-$ yarn start
 ```
 
 Open up [http://127.0.0.1:8787](http://127.0.0.1:8787) and you should be ready to go!
-
-If you'd rather run everything in a single tab, you can look at [concurrently](https://npm.im/concurrently) or similar tools to run both processes in one tab.
 
 ## Deployment
 
@@ -30,5 +24,5 @@ If you don't already have an account, then [create a cloudflare account here](ht
 Once that's done, you should be able to deploy your app:
 
 ```sh
-npm run deploy
+yarn run deploy
 ```

@@ -6,12 +6,7 @@ self.addEventListener('fetch', (event) => {
   if (method.toLowerCase() !== 'get') return;
 
   // If the request is for the favicons, fonts, or the built files (which are hashed in the name)
-  if (
-    url.pathname.match('/favicon.ico') ||
-    url.pathname.startsWith('/favicons/') ||
-    url.pathname.startsWith('/fonts/') ||
-    url.pathname.startsWith('/build/')
-  ) {
+  if (url.pathname.startsWith('/images/') || url.pathname.startsWith('/fonts/')) {
     event.respondWith(
       // we will open the assets cache
       caches.open('assets').then(async (cache) => {

@@ -1,7 +1,7 @@
 .menu-item {
   @apply relative;
   > a {
-    @apply text-xl mr-6 py-1 block;
+    @apply mr-6 block py-1 text-xl;
   }
   &:hover .submenu {
     opacity: 1;
@@ -14,7 +14,7 @@
   transform: translateY(-10px);
   visibility: hidden;
   top: 120%;
-  @apply p-4 text-white text-sm transition-all ease-in duration-300 bg-black absolute left-0 opacity-0;
+  @apply absolute left-0 bg-black p-4 text-sm text-white opacity-0 transition-all duration-300 ease-in;
   &::before {
     position: absolute;
     top: -15px;

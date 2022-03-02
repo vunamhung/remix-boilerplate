@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'seseable-icons';
+  src: url('/fonts/seseable-icons.ttf?hkql6h') format('truetype'), url('/fonts/seseable-icons.woff?hkql6h') format('woff'),
+    url('/fonts/seseable-icons.svg?hkql6h#seseable-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'seseable-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-building:before {
+  content: '\e904';
+}
+.icon-close:before {
+  content: '\e91c';
+}
+.icon-email-sent:before {
+  content: '\e91d';
+}
+.icon-favorite:before {
+  content: '\e91e';
+}
+.icon-favorited:before {
+  content: '\e91f';
+}
+.icon-order-checked:before {
+  content: '\e921';
+}
+.icon-warehouse:before {
+  content: '\e923';
+}
+.icon-menu:before {
+  content: '\e902';
+}
+.icon-check:before {
+  content: '\e903';
+}
+.icon-check-circle:before {
+  content: '\e905';
+}
+.icon-chevron-down:before {
+  content: '\e901';
+}
+.icon-chevron-left:before {
+  content: '\e906';
+}
+.icon-chevron-right:before {
+  content: '\e910';
+}
+.icon-chevron-up:before {
+  content: '\e909';
+}
+.icon-facebook:before {
+  content: '\e90a';
+}
+.icon-filter:before {
+  content: '\e90c';
+}
+.icon-support:before {
+  content: '\e90e';
+}
+.icon-heart:before {
+  content: '\e907';
+}
+.icon-home:before {
+  content: '\e908';
+}
+.icon-instagram:before {
+  content: '\e911';
+}
+.icon-help:before {
+  content: '\e912';
+}
+.icon-link:before {
+  content: '\e913';
+}
+.icon-linkedin:before {
+  content: '\e914';
+}
+.icon-mail:before {
+  content: '\e915';
+}
+.icon-phone:before {
+  content: '\e900';
+}
+.icon-search:before {
+  content: '\e90b';
+}
+.icon-shield:before {
+  content: '\e916';
+}
+.icon-trash:before {
+  content: '\e917';
+}
+.icon-truck:before {
+  content: '\e918';
+}
+.icon-twitter:before {
+  content: '\e919';
+}
+.icon-user:before {
+  content: '\e90f';
+}

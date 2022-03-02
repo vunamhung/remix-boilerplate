@@ -6,9 +6,13 @@ module.exports = {
   content: ['./app/**/*.tsx'],
   theme: {
     fontFamily: {
-      sans: ['Muli', ...fontFamily.sans],
+      sans: ['Jost', 'Helvetica Neue', ...fontFamily.sans],
+      body: fontFamily.sans,
     },
     extend: {
+      gridTemplateColumns: {
+        'fill-7': `repeat(auto-fill, ${spacing[7]})`,
+      },
       colors: {
         neutral: colors.slate,
         positive: colors.green,
@@ -77,5 +81,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@vunamhung/slimui'), require('@tailwindcss/typography'), require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')],
+  plugins: [
+    require('@vunamhung/slimui'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/forms')({ strategy: 'class' }),
+  ],
 };

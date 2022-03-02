@@ -2,6 +2,12 @@ name = "remix-boilerplate"
 type = "javascript"
 compatibility_date = "2022-01-14"
 
+[vars]
+BRAND = "Remix"
+API_BASE_URL = "https://api.remix.run"
+IR_URL = "https://ir.remix.run"
+HOST = "http://127.0.0.1"
+
 [env.development]
 zone_id = ""
 account_id = "93e39c248caa03a01ab11bc4d73875cf"
@@ -14,13 +20,18 @@ account_id = "93e39c248caa03a01ab11bc4d73875cf"
 route = "https://remix.hungvu.work/*"
 workers_dev = false
 
+[env.production.vars]
+BRAND = "Remix"
+API_BASE_URL = "https://api.remix.run"
+IR_URL = "https://ir.remix.run"
+HOST = "https://remix.run"
+
 [site]
 bucket = "./public"
 entry-point = "."
 
 [build]
-command = "./build_production.mjs"
-watch_dir = "build/index.js"
+command = "yarn run build"
 
 [build.upload]
 format="service-worker"

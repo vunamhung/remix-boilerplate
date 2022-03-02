@@ -1,5 +1,5 @@
-import header from './header';
+import { beforeHeader } from './header';
 
 export default function () {
-  header();
+  // beforeHeader()
 }
