@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import clsx from 'clsx';
 import { Dialog, Transition } from '@headlessui/react';
 
-type props = { visible: any; toggle: any; children: ReactNode; title?: string; size?: 'sm' | 'md' | 'lg'; align?: 'top' | 'middle' };
+type props = { visible: any; toggle: any; children: ReactNode; title?: string; size?: 'sm' | 'md' | 'lg' | 'xl'; align?: 'top' | 'middle' };
 export const Modal: FC<props> = ({ visible, toggle, children, title, size = 'sm', align = 'middle' }) => {
   return (
     <Transition appear show={visible} as={Fragment}>
@@ -41,8 +41,9 @@ export const Modal: FC<props> = ({ visible, toggle, children, title, size = 'sm'
                   'align-middle': align === 'middle',
                   'align-top': align === 'top',
                   'lg:max-w-md': size === 'sm',
-                  'lg:max-w-1/2': size === 'md',
-                  'lg:max-w-2/3': size === 'lg',
+                  'lg:max-w-[34rem]': size === 'md',
+                  'lg:max-w-1/2': size === 'lg',
+                  'lg:max-w-2/3': size === 'xl',
                 },
               )}
             >
