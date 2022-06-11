@@ -1,37 +1,29 @@
-name = "remix-boilerplate"
-type = "javascript"
+name = "remix-boilerplate" #todo need real data
 compatibility_date = "2022-01-14"
 
+account_id = "93e39c248caa03a01ab11bc4d73875cf" #todo need real data
+workers_dev = true
+
+main = "build/index.js"
+
 [vars]
-BRAND = "Remix"
-API_BASE_URL = "https://api.remix.run"
+BRAND = "Remix Boilerplate" #todo need real data
+API_BASE_URL = "https://api.remix.com" #todo need real data
 IR_URL = "https://ir.remix.run"
 HOST = "http://127.0.0.1"
 
-[env.development]
-zone_id = ""
-account_id = "93e39c248caa03a01ab11bc4d73875cf"
-route = ""
-workers_dev = true
-
 [env.production]
-zone_id = "b79f0295aaddd62c59d1a71a7bd8924a"
-account_id = "93e39c248caa03a01ab11bc4d73875cf"
-route = "https://remix.hungvu.work/*"
+route = "https://remix.hungvu.work/*" #todo need real data
 workers_dev = false
 
 [env.production.vars]
-BRAND = "Remix"
-API_BASE_URL = "https://api.remix.run"
+BRAND = "Remix Boilerplate" #todo need real data
+API_BASE_URL = "https://api.remix.com" #todo need real data
 IR_URL = "https://ir.remix.run"
-HOST = "https://remix.run"
+HOST = "http://127.0.0.1"
 
 [site]
 bucket = "./public"
-entry-point = "."
 
 [build]
-command = "yarn run build"
-
-[build.upload]
-format="service-worker"
+command = "npm run build"

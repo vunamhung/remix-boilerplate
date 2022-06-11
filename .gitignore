@@ -7,3 +7,4 @@ node_modules
 /dist
 /public/build
 /app/style.css
+.env*

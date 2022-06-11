@@ -10,7 +10,7 @@ You will be running two processes during development:
 - The Remix development server
 
 ```sh
-$ yarn run dev
+$ npm run dev
 ```
 
 Open up [http://127.0.0.1:8787](http://127.0.0.1:8787) and you should be ready to go!
@@ -24,5 +24,5 @@ If you don't already have an account, then [create a cloudflare account here](ht
 Once that's done, you should be able to deploy your app:
 
 ```sh
-yarn run deploy
+npm run deploy
 ```
