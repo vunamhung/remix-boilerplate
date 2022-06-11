@@ -1,4 +1,4 @@
-import { json } from 'remix';
+import { json } from "@remix-run/cloudflare";
 import { stringify } from 'query-string';
 import { isEmpty, reject } from 'ramda';
 import { badRequest, forbidden, notFound, serverError, unauthorized } from 'remix-utils';

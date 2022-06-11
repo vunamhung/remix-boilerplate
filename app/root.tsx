@@ -1,7 +1,20 @@
 import type { ReactNode } from 'react';
-import type { MetaFunction, LinksFunction, ShouldReloadFunction, LoaderFunction } from 'remix';
+import type { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
+import type { ShouldReloadFunction } from "@remix-run/react";
+
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useCatch,
+  useLoaderData,
+} from "@remix-run/react";
+
 import type { iSettings, iError } from '~/types';
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useCatch, LiveReload, useLoaderData, json } from 'remix';
 import isbot from 'isbot';
 import md from 'is-mobile';
 import { Toaster } from 'react-hot-toast';

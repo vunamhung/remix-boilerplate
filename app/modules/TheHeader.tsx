@@ -1,5 +1,5 @@
 import type { iSettings } from '~/types';
-import { Link, NavLink } from 'remix';
+import { Link, NavLink } from "@remix-run/react";
 import { isNilOrEmpty } from 'ramda-adjunct';
 import { hooks } from '~/root';
 import { useHeadroom, useStore } from '~/hooks';

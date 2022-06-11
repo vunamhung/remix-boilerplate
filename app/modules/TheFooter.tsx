@@ -1,5 +1,5 @@
 import type { iSettings } from '~/types';
-import { Link } from 'remix';
+import { Link } from "@remix-run/react";
 import { hooks } from '~/root';
 import { Logo } from '~/components';
 
