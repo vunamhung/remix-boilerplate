@@ -1,6 +1,8 @@
 const { fontFamily, spacing } = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
   content: ['./app/**/*.tsx'],
@@ -9,10 +11,15 @@ module.exports = {
       sans: ['Jost', 'Helvetica Neue', ...fontFamily.sans],
       body: fontFamily.sans,
     },
+    gridAutoFit: {
+      1: spacing[1],
+      7: spacing[7],
+    },
+    gridAutoFill: {
+      1: spacing[1],
+      7: spacing[7],
+    },
     extend: {
-      gridTemplateColumns: {
-        'fill-7': `repeat(auto-fill, ${spacing[7]})`,
-      },
       colors: {
         neutral: colors.slate,
         positive: colors.green,
@@ -82,7 +89,16 @@ module.exports = {
     },
   },
   plugins: [
-    require('@vunamhung/slimui'),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        { 'grid-auto-fit': (value) => ({ gridTemplateColumns: `repeat(auto-fit, minmax(${value}, 1fr))` }) },
+        { values: theme('gridAutoFit') },
+      );
+      matchUtilities(
+        { 'grid-auto-fill': (value) => ({ gridTemplateColumns: `repeat(auto-fill, minmax(${value}, 1fr))` }) },
+        { values: theme('gridAutoFill') },
+      );
+    }),
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/forms')({ strategy: 'class' }),
