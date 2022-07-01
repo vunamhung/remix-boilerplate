@@ -5,10 +5,5 @@ module.exports = {
   serverBuildTarget: 'cloudflare-workers',
   server: './server.ts',
   devServerBroadcastDelay: 1000,
-  ignoredRouteFiles: ['.*'],
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // serverBuildPath: "build/index.js",
-  // publicPath: "/build/",
-  // devServerPort: 8002
+  ignoredRouteFiles: ['.*', '**/_components/*', '**/helper.ts'],
 };

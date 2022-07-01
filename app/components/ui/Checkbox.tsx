@@ -2,7 +2,6 @@ import type { FC } from 'react';
 import type { RegisterOptions } from 'react-hook-form';
 import clsx from 'clsx';
 import { Controller } from 'react-hook-form';
-import { __ } from '~/utilities';
 
 type props = {
   control: any;
@@ -29,7 +28,7 @@ export const Checkbox: FC<props> = ({ control, rules, name, label, className }) 
             />
             {label}
           </label>
-          {error && <span className="absolute -bottom-4 left-0 text-xs text-red-500">{error?.message || __('This field is required')}</span>}
+          {error && <span className="absolute -bottom-4 left-0 text-xs text-red-500">{error?.message || 'This field is required'}</span>}
         </div>
       )}
     />

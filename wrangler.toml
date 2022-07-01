@@ -6,21 +6,9 @@ workers_dev = true
 
 main = "build/index.js"
 
-[vars]
-BRAND = "Remix Boilerplate" #todo need real data
-API_BASE_URL = "https://api.remix.com" #todo need real data
-IR_URL = "https://ir.remix.run"
-HOST = "http://127.0.0.1"
-
 [env.production]
 route = "https://remix.hungvu.work/*" #todo need real data
 workers_dev = false
-
-[env.production.vars]
-BRAND = "Remix Boilerplate" #todo need real data
-API_BASE_URL = "https://api.remix.com" #todo need real data
-IR_URL = "https://ir.remix.run"
-HOST = "http://127.0.0.1"
 
 [site]
 bucket = "./public"

@@ -1,7 +1,12 @@
-import { useLocation } from "@remix-run/react";
+import { useLocation, useSearchParams } from '@remix-run/react';
 import { parse } from 'querystring';
 
-export default function useQuery(): any {
+export function useQuery() {
   const { search } = useLocation();
-  return parse(search.replace('?', ''));
+  const [, setSearchParams] = useSearchParams();
+
+  const query: any = parse(search.replace('?', ''));
+  const setQuery = (value: any) => setSearchParams({ ...query, ...value });
+
+  return [query, setQuery];
 }

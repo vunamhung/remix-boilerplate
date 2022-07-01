@@ -1,13 +1,16 @@
 import { json } from '@remix-run/cloudflare';
+import { reject } from 'ramda';
 import { stringify } from 'query-string';
 import { isNilOrEmpty } from 'ramda-adjunct';
-import { isEmpty, isNil, reject } from 'ramda';
 import { badRequest, forbidden, notFound, serverError, unauthorized } from 'remix-utils';
-import { fields } from '~/hooks';
+import { config, trailingSlash } from '~/utilities';
 
-export async function rawFetch(url: string, params?: object) {
-  const uri = url?.startsWith('http') ? url : `${API_BASE_URL}/${url}`;
-  const response = await fetch(params ? `${uri}?${stringify(reject(isNil)(params))}` : uri);
+async function rawFetch(url: string, options?: { params?: object; accessToken?: string }) {
+  const uri = url.startsWith('http') ? url : `${config.apiBaseUrl}/${trailingSlash(url)}`;
+  let query = options?.params ? '?' + stringify(reject(isNilOrEmpty)(options.params)) : '';
+  let requestInitr = options?.accessToken ? { headers: { Authorization: `Bearer ${options?.accessToken}` } } : undefined;
+
+  const response = await fetch(uri + query, requestInitr);
 
   const data = await response.text();
 
@@ -16,8 +19,13 @@ export async function rawFetch(url: string, params?: object) {
   return JSON.parse(data);
 }
 
-export async function fetcher(url: string, params?: object) {
-  const data = await rawFetch(url, params);
+export async function fetcher(
+  url: string,
+  options?: { params?: object; accessToken?: string; rawData?: boolean; cacheControl?: 'public, max-age=300' | string },
+) {
+  const data = await rawFetch(url, { params: options?.params, accessToken: options?.accessToken });
+
+  if (options?.rawData) return data;
 
   if (data?.statusCode === 400 || isNilOrEmpty(data)) throw badRequest({ message: 'Bad request' });
   if (data?.statusCode === 401) throw unauthorized({ message: 'Unauthorized' });
@@ -25,17 +33,11 @@ export async function fetcher(url: string, params?: object) {
   if (data?.statusCode === 404) throw notFound({ message: 'Not Found' });
   if (data?.statusCode === 500) throw serverError({ message: 'Internal Server Error' });
 
-  return data;
-}
+  let tokenCookie = `token=${options?.accessToken}; SameSite=Strict; Secure`;
+  if (options?.cacheControl && options?.accessToken)
+    return json(data, { headers: { 'Cache-Control': options.cacheControl, 'Set-Cookie': tokenCookie } });
+  if (options?.cacheControl) return json(data, { headers: { 'Cache-Control': options.cacheControl } });
+  if (options?.accessToken) return json(data, { headers: { 'Set-Cookie': tokenCookie } });
 
-export async function fetchData(url: string, params?: object, cacheControl = 'public, max-age=300', additionalData?: object | null) {
-  const data = await fetcher(url, params);
-
-  if (additionalData) return json({ ...data, ...additionalData }, { headers: { 'Cache-Control': cacheControl } });
-
-  return json(data, { headers: { 'Cache-Control': cacheControl } });
-}
-
-export async function fetchProductsData(params?: object) {
-  return await fetchData('products/search2', reject(isEmpty)({ ...params, fields }));
+  return json(data);
 }

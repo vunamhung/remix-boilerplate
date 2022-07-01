@@ -89,7 +89,8 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(({ matchUtilities, theme }) => {
+    plugin(({ matchUtilities, theme, addVariant }) => {
+      addVariant('child', '&>*');
       matchUtilities(
         { 'grid-auto-fit': (value) => ({ gridTemplateColumns: `repeat(auto-fit, minmax(${value}, 1fr))` }) },
         { values: theme('gridAutoFit') },
@@ -101,6 +102,5 @@ module.exports = {
     }),
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/forms')({ strategy: 'class' }),
   ],
 };

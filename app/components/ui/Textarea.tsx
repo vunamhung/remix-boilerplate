@@ -3,7 +3,6 @@ import type { RegisterOptions } from 'react-hook-form';
 import clsx from 'clsx';
 import RcTextarea from 'rc-textarea';
 import { Controller } from 'react-hook-form';
-import { __ } from '~/utilities';
 
 type props = {
   control: any;
@@ -38,7 +37,7 @@ export const Textarea: FC<props> = ({ control, rules, name, label, description, 
           />
           {error && (
             <span className={clsx('absolute -bottom-4 text-xs text-red-500', { 'right-0': label })}>
-              {error?.message || __('This field is required')}
+              {error?.message || 'This field is required'}
             </span>
           )}
         </div>
