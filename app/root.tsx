@@ -1,13 +1,12 @@
 import type { ReactNode } from 'react';
 import type { iError } from '~/types';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch, useLocation } from '@remix-run/react';
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from '@remix-run/react';
 import { Toaster } from 'react-hot-toast';
 import { DynamicLinks } from 'remix-utils';
 import { useProgress, useRevalidate } from '~/hooks';
-import { favicon, getTitle } from '~/utilities';
 import stylesUrl from './style.css';
 
-export const meta = { title: getTitle() };
+export const meta = { title: 'Remix Boilerplate' };
 export const links = () => [{ rel: 'stylesheet', href: stylesUrl }];
 
 function Document({ children, title }: { children: ReactNode; title: string }) {
@@ -16,7 +15,7 @@ function Document({ children, title }: { children: ReactNode; title: string }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <link rel="icon" type="image/svg+xml" href="/images/favicon.ico" />
         <title>{title}</title>
         <Meta />
         <Links />
@@ -35,7 +34,7 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="icon" type="image/svg+xml" href={favicon} />
+        <link rel="icon" type="image/svg+xml" href="/images/favicon.ico" />
         <Meta />
         <DynamicLinks />
         <Links />
