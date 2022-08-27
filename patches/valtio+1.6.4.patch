@@ -1,8 +1,8 @@
 diff --git a/node_modules/valtio/esm/index.js b/node_modules/valtio/esm/index.js
-index c0dfacf..7598638 100644
+index 6e4ea3b..96dff69 100644
 --- a/node_modules/valtio/esm/index.js
 +++ b/node_modules/valtio/esm/index.js
-@@ -37,7 +37,7 @@ function useSnapshot(proxyObject, options) {
+@@ -49,7 +49,7 @@ function useSnapshot(proxyObject, options) {
      lastSnapshot.current = currSnapshot;
      lastAffected.current = currAffected;
    });
@@ -12,10 +12,10 @@ index c0dfacf..7598638 100644
    }
    const proxyCache = useMemo(() => /* @__PURE__ */ new WeakMap(), []);
 diff --git a/node_modules/valtio/esm/index.mjs b/node_modules/valtio/esm/index.mjs
-index c0dfacf..7598638 100644
+index 6e4ea3b..96dff69 100644
 --- a/node_modules/valtio/esm/index.mjs
 +++ b/node_modules/valtio/esm/index.mjs
-@@ -37,7 +37,7 @@ function useSnapshot(proxyObject, options) {
+@@ -49,7 +49,7 @@ function useSnapshot(proxyObject, options) {
      lastSnapshot.current = currSnapshot;
      lastAffected.current = currAffected;
    });
@@ -25,10 +25,10 @@ index c0dfacf..7598638 100644
    }
    const proxyCache = useMemo(() => /* @__PURE__ */ new WeakMap(), []);
 diff --git a/node_modules/valtio/esm/utils.js b/node_modules/valtio/esm/utils.js
-index 96defcb..8a1f65b 100644
+index 91bf63d..7de0723 100644
 --- a/node_modules/valtio/esm/utils.js
 +++ b/node_modules/valtio/esm/utils.js
-@@ -71,11 +71,11 @@ function devtools(proxyObject, options) {
+@@ -77,11 +77,11 @@ function devtools(proxyObject, options) {
    const { enabled, name = "" } = options || {};
    let extension;
    try {
@@ -43,10 +43,10 @@ index 96defcb..8a1f65b 100644
      }
      return;
 diff --git a/node_modules/valtio/esm/utils.mjs b/node_modules/valtio/esm/utils.mjs
-index 96defcb..8a1f65b 100644
+index 91bf63d..7de0723 100644
 --- a/node_modules/valtio/esm/utils.mjs
 +++ b/node_modules/valtio/esm/utils.mjs
-@@ -71,11 +71,11 @@ function devtools(proxyObject, options) {
+@@ -77,11 +77,11 @@ function devtools(proxyObject, options) {
    const { enabled, name = "" } = options || {};
    let extension;
    try {
@@ -61,7 +61,7 @@ index 96defcb..8a1f65b 100644
      }
      return;
 diff --git a/node_modules/valtio/esm/vanilla.js b/node_modules/valtio/esm/vanilla.js
-index 413a146..033e80d 100644
+index 9a38d06..d24f73e 100644
 --- a/node_modules/valtio/esm/vanilla.js
 +++ b/node_modules/valtio/esm/vanilla.js
 @@ -1,11 +1,11 @@
@@ -82,7 +82,7 @@ index 413a146..033e80d 100644
  const refSet = /* @__PURE__ */ new WeakSet();
  function ref(o) {
    refSet.add(o);
-@@ -173,7 +173,7 @@ function getVersion(proxyObject) {
+@@ -175,7 +175,7 @@ function getVersion(proxyObject) {
    return isObject(proxyObject) ? proxyObject[VERSION] : void 0;
  }
  function subscribe(proxyObject, callback, notifyInSync) {
@@ -91,7 +91,7 @@ index 413a146..033e80d 100644
      console.warn("Please use proxy object");
    }
    let promise;
-@@ -197,13 +197,13 @@ function subscribe(proxyObject, callback, notifyInSync) {
+@@ -199,13 +199,13 @@ function subscribe(proxyObject, callback, notifyInSync) {
    };
  }
  function snapshot(proxyObject) {
@@ -108,7 +108,7 @@ index 413a146..033e80d 100644
    }
    return proxyObject[HANDLER];
 diff --git a/node_modules/valtio/esm/vanilla.mjs b/node_modules/valtio/esm/vanilla.mjs
-index 413a146..033e80d 100644
+index 9a38d06..d24f73e 100644
 --- a/node_modules/valtio/esm/vanilla.mjs
 +++ b/node_modules/valtio/esm/vanilla.mjs
 @@ -1,11 +1,11 @@
@@ -129,7 +129,7 @@ index 413a146..033e80d 100644
  const refSet = /* @__PURE__ */ new WeakSet();
  function ref(o) {
    refSet.add(o);
-@@ -173,7 +173,7 @@ function getVersion(proxyObject) {
+@@ -175,7 +175,7 @@ function getVersion(proxyObject) {
    return isObject(proxyObject) ? proxyObject[VERSION] : void 0;
  }
  function subscribe(proxyObject, callback, notifyInSync) {
@@ -138,7 +138,7 @@ index 413a146..033e80d 100644
      console.warn("Please use proxy object");
    }
    let promise;
-@@ -197,13 +197,13 @@ function subscribe(proxyObject, callback, notifyInSync) {
+@@ -199,13 +199,13 @@ function subscribe(proxyObject, callback, notifyInSync) {
    };
  }
  function snapshot(proxyObject) {
