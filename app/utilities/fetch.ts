@@ -1,4 +1,4 @@
-import { json } from '@remix-run/cloudflare';
+import { json, redirect } from '@remix-run/cloudflare';
 import { reject } from 'ramda';
 import { stringify } from 'query-string';
 import { isNilOrEmpty } from 'ramda-adjunct';
@@ -23,12 +23,20 @@ export async function fetcher(
   url: string,
   options?: { params?: object; accessToken?: string; rawData?: boolean; cacheControl?: 'public, max-age=300' | string },
 ) {
-  const data = await rawFetch(url, { params: options?.params, accessToken: options?.accessToken });
+  let data = await rawFetch(url, { params: options?.params, accessToken: options?.accessToken });
 
   if (options?.rawData) return data;
 
   if (data?.statusCode === 400 || isNilOrEmpty(data)) throw badRequest({ message: 'Bad request' });
-  if (data?.statusCode === 401) throw unauthorized({ message: 'Unauthorized' });
+  if (data?.statusCode === 401) {
+    const { token } = await rawFetch('/token');
+    if (token) {
+      data = await rawFetch(url, { params: options?.params, accessToken: token });
+      if (options?.rawData) return data;
+    } else {
+      throw redirect('/login');
+    }
+  }
   if (data?.statusCode === 403) throw forbidden({ message: 'Forbidden' });
   if (data?.statusCode === 404) throw notFound({ message: 'Not Found' });
   if (data?.statusCode === 500) throw serverError({ message: 'Internal Server Error' });
