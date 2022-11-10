@@ -19,9 +19,9 @@
   "dependencies": {
     "@mantine/hooks": "^5.2.3",
     "@ngneat/falso": "^6.1.0",
-    "@remix-run/cloudflare": "^1.7.0",
-    "@remix-run/cloudflare-workers": "^1.7.0",
-    "@remix-run/react": "^1.7.0",
+    "@remix-run/cloudflare": "^1.7.5",
+    "@remix-run/cloudflare-workers": "^1.7.5",
+    "@remix-run/react": "^1.7.5",
     "@tabler/icons": "^1.88.0",
     "@tsndr/cloudflare-worker-jwt": "^2.0.1",
     "axios": "0.27.2",
@@ -49,10 +49,10 @@
     "valtio": "^1.6.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.14.1",
+    "@cloudflare/workers-types": "^3.18.0",
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
-    "@remix-run/dev": "^1.7.0",
-    "@remix-run/eslint-config": "^1.7.0",
+    "@remix-run/dev": "^1.7.5",
+    "@remix-run/eslint-config": "^1.7.5",
     "@svgr/cli": "^6.3.1",
     "@tailwindcss/line-clamp": "0.4.0",
     "@tailwindcss/typography": "^0.5.4",
