@@ -1,8 +1,8 @@
 diff --git a/node_modules/tailwindcss/lib/css/preflight.css b/node_modules/tailwindcss/lib/css/preflight.css
-index bf36495..2e94f72 100644
+index 3029044..6e05050 100644
 --- a/node_modules/tailwindcss/lib/css/preflight.css
 +++ b/node_modules/tailwindcss/lib/css/preflight.css
-@@ -186,7 +186,6 @@ button,
+@@ -188,7 +188,6 @@ button,
  [type='reset'],
  [type='submit'] {
    -webkit-appearance: button; /* 1 */
