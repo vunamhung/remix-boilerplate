@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
-import type { iError } from '~/types';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from '@remix-run/react';
+import { isRouteErrorResponse, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from '@remix-run/react';
 import { Toaster } from 'react-hot-toast';
 import { DynamicLinks } from 'remix-utils';
 import { useProgress, useRevalidate } from '~/hooks';
 import stylesUrl from './assets/css/style.css';
 
-export const meta = { title: 'Remix Boilerplate' };
+export const meta = () => [{ title: 'Remix Boilerplate' }];
 export const links = () => [{ rel: 'stylesheet', href: stylesUrl }];
 
 function Document({ children, title }: { children: ReactNode; title: string }) {
@@ -50,35 +49,28 @@ export default function App() {
   );
 }
 
-export function CatchBoundary() {
-  const { status } = useCatch();
+export function ErrorBoundary() {
+  const error = useRouteError();
 
-  switch (status) {
-    case 404:
-      return (
-        <Document title="404: This page could not be found.">
-          <div className="container flex h-screen items-center justify-center">
-            <h1 className="inline-flex items-center">
-              <span className="border-r-2 border-black pr-2">404</span> <span className="ml-2 text-base">This page could not be found.</span>
-            </h1>
-          </div>
-        </Document>
-      );
-
-    default:
-      throw new Error(`Unexpected caught response with status: ${status}`);
+  // when true, this is what used to go to `CatchBoundary`
+  if (isRouteErrorResponse(error)) {
+    return (
+      <Document title="404: This page could not be found.">
+        <div className="container flex h-screen items-center justify-center">
+          <h1 className="inline-flex items-center">
+            <span className="border-r-2 border-black pr-2">404</span> <span className="ml-2 text-base">This page could not be found.</span>
+          </h1>
+        </div>
+      </Document>
+    );
   }
-}
-
-export function ErrorBoundary({ error }: iError) {
-  console.error(error);
 
   return (
     <Document title="Uh-oh!">
       <div className="container flex h-screen items-center">
         <div>
           <h1>App Error</h1>
-          <pre>{error.message}</pre>
+          <pre>Unknown error</pre>
         </div>
       </div>
     </Document>
