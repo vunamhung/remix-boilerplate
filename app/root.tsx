@@ -4,7 +4,7 @@ import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch }
 import { Toaster } from 'react-hot-toast';
 import { DynamicLinks } from 'remix-utils';
 import { useProgress, useRevalidate } from '~/hooks';
-import stylesUrl from './style.css';
+import stylesUrl from './assets/css/style.css';
 
 export const meta = { title: 'Remix Boilerplate' };
 export const links = () => [{ rel: 'stylesheet', href: stylesUrl }];

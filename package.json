@@ -5,13 +5,11 @@
   "main": "build/index.js",
   "scripts": {
     "postinstall": "patch-package",
-    "tailwind": "tailwindcss -i app/assets/css/style.css -o app/style.css --postcss",
-    "dev:tailwind": "yarn run tailwind --watch",
     "dev:remix": "cross-env NODE_ENV=development remix watch",
     "dev:miniflare": "cross-env NODE_ENV=development miniflare --watch",
-    "dev": "concurrently 'yarn:dev:*'",
+    "dev": "concurrently 'npm:dev:*'",
     "prebuild": "rimraf .cache dist build public/build",
-    "build": "cross-env NODE_ENV=production yarn run tailwind --minify && remix build",
+    "build": "cross-env NODE_ENV=production remix build",
     "deploy": "wrangler publish -e production",
     "deploy:dev": "wrangler publish",
     "svgr": "svgr app/assets/svg/ -d app/icons/ --ext tsx --icon"
@@ -19,9 +17,9 @@
   "dependencies": {
     "@mantine/hooks": "^5.10.0",
     "@ngneat/falso": "^6.3.2",
-    "@remix-run/cloudflare": "^1.9.0",
-    "@remix-run/cloudflare-workers": "^1.9.0",
-    "@remix-run/react": "^1.9.0",
+    "@remix-run/cloudflare": "^1.15.0",
+    "@remix-run/cloudflare-workers": "^1.15.0",
+    "@remix-run/react": "^1.15.0",
     "@tabler/icons": "^1.119.0",
     "@tsndr/cloudflare-worker-jwt": "^2.1.4",
     "axios": "^1.2.2",
@@ -51,8 +49,8 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^3.18.0",
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
-    "@remix-run/dev": "^1.9.0",
-    "@remix-run/eslint-config": "^1.9.0",
+    "@remix-run/dev": "^1.15.0",
+    "@remix-run/eslint-config": "^1.15.0",
     "@svgr/cli": "^6.5.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
@@ -69,17 +67,17 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-valtio": "^0.6.1",
-    "miniflare": "^2.11.0",
-    "postcss": "^8.4.16",
+    "miniflare": "^2.13.0",
+    "postcss": "^8.4.21",
     "postcss-import": "^15.1.0",
     "postcss-import-ext-glob": "^2.1.1",
-    "postcss-inline-svg": "^5.0.0",
-    "prettier": "^2.8.1",
-    "prettier-plugin-tailwindcss": "^0.2.1",
+    "postcss-inline-svg": "^6.0.0",
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.7",
     "rimraf": "^3.0.2",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
-    "wrangler": "^2.6.2"
+    "wrangler": "^2.15.0"
   },
   "engines": {
     "node": ">=16.7"
