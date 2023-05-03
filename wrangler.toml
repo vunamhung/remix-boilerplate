@@ -7,11 +7,13 @@ workers_dev = true
 main = "build/index.js"
 
 [env.production]
-route = "https://remix.hungvu.work/*" #todo need real data
-workers_dev = false
+  routes = [
+    { pattern = "remix.hungvu.work", custom_domain = true }
+  ]
+  workers_dev = false
 
 [site]
-bucket = "./public"
+  bucket = "./public"
 
 [build]
-command = "npm run build"
+  command = "npm run build"
