@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
 import { isRouteErrorResponse, Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from '@remix-run/react';
 import { Toaster } from 'react-hot-toast';
-import { DynamicLinks } from 'remix-utils';
-import { useProgress, useRevalidate } from '~/hooks';
+import { useProgress } from '~/hooks';
 import stylesUrl from './assets/css/style.css';
 
 export const meta = () => [{ title: 'Remix Boilerplate' }];
@@ -26,7 +25,6 @@ function Document({ children, title }: { children: ReactNode; title: string }) {
 
 export default function App() {
   useProgress();
-  useRevalidate();
 
   return (
     <html lang="en">
@@ -35,7 +33,6 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/images/favicon.ico" />
         <Meta />
-        <DynamicLinks />
         <Links />
       </head>
       <body className="flex min-h-screen">
