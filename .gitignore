@@ -1,10 +1,13 @@
-node_modules
 .idea
+node_modules
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+http-client.private.env.json
+stats.html
 
-/.mf
 /.cache
 /build
-/dist
 /public/build
-/app/style.css
-.env*

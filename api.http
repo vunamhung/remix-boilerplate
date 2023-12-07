@@ -1,0 +1,10 @@
+### Login
+POST {{host}}/login
+Content-Type: application/json
+
+{
+  "id": "{{id}}",
+  "password": "{{password}}"
+}
+
+> {% client.global.set("accessToken", response.body.accessToken); %}

@@ -1,28 +1,28 @@
-# Welcome to Remix!
+# templates/unstable-vite
 
-- [Remix Docs](https://remix.run/docs)
+⚠️ Remix support for Vite is unstable and not recommended for production.
 
-## Development
+📖 See the [Remix Vite docs][remix-vite-docs] for details on supported features.
 
-You will be running two processes during development:
+## Setup
 
-- The Miniflare server (miniflare is a local environment for Cloudflare Workers)
-- The Remix development server
-
-```sh
-$ npm run dev
+```shellscript
+npx create-remix@latest --template remix-run/remix/templates/unstable-vite
 ```
 
-Open up [http://127.0.0.1:8787](http://127.0.0.1:8787) and you should be ready to go!
+## Run
 
-## Deployment
+Spin up the Vite dev server:
 
-Use [wrangler](https://developers.cloudflare.com/workers/cli-wrangler) to build and deploy your application to Cloudflare Workers. If you don't have it yet, follow [the installation guide](https://developers.cloudflare.com/workers/cli-wrangler/install-update) to get it setup. Be sure to [authenticate the CLI](https://developers.cloudflare.com/workers/cli-wrangler/authentication) as well.
-
-If you don't already have an account, then [create a cloudflare account here](https://dash.cloudflare.com/sign-up) and after verifying your email address with Cloudflare, go to your dashboard and set up your free custom Cloudflare Workers subdomain.
-
-Once that's done, you should be able to deploy your app:
-
-```sh
-npm run deploy
+```shellscript
+npm run dev
 ```
+
+Or build your app for production and run it:
+
+```shellscript
+npm run build
+npm run start
+```
+
+[remix-vite-docs]: https://remix.run/docs/en/main/future/vite
