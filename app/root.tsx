@@ -1,9 +1,9 @@
 import type { LinksFunction } from '@remix-run/node';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import style from '~/assets/css/style.css';
+import '~/assets/css/style.css';
 
-export const links: LinksFunction = () => [{ rel: 'stylesheet', href: style }];
+export const links: LinksFunction = () => [...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : [])];
 
 export default function App() {
   return (
