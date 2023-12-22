@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="container">
-      <h1>Welcome to Remix</h1>
+      <h1 className='text-blue-600'>Welcome to Remix</h1>
       <ul>
         <li>
           <a target="_blank" href="https://remix.run/tutorials/blog" rel="noreferrer">
