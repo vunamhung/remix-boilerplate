@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node';
+import { Button } from '@nextui-org/react';
 
 export const meta: MetaFunction = () => [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }];
 
@@ -6,6 +7,7 @@ export default function Index() {
   return (
     <div className="container">
       <h1>Welcome to Remix</h1>
+      <Button color="primary">Button</Button>
       <ul>
         <li>
           <a target="_blank" href="https://remix.run/tutorials/blog" rel="noreferrer">

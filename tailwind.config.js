@@ -1,10 +1,11 @@
 const { fontFamily, spacing } = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
+const { nextui } = require('@nextui-org/react');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./app/**/*.{js,ts,jsx,tsx}'],
+  content: ['./app/**/*.{js,ts,jsx,tsx}', './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'],
   theme: {
     gridAutoFit: {
       1: spacing[1],
@@ -84,6 +85,7 @@ module.exports = {
     },
   },
   plugins: [
+    nextui(),
     plugin(({ matchUtilities, theme, addVariant }) => {
       addVariant('child', '&>*');
       matchUtilities(
