@@ -4,3 +4,5 @@
 @import 'components/general.css';
 @import 'tailwindcss/components.css';
 @import 'tailwindcss/utilities.css';
+@import 'nprogress/nprogress.css';
+@import 'swiper/swiper-bundle.css';
